@@ -16,6 +16,8 @@
       --accent2: #a06b3f;
       --soft-accent: rgba(47, 93, 98, 0.10);
       --shadow: 0 24px 70px rgba(31, 33, 31, 0.10);
+      --node-fill: rgba(47, 93, 98, 0.18);
+      --bond-color: rgba(47, 93, 98, 0.35);
     }
 
     [data-theme="dark"] {
@@ -28,17 +30,12 @@
       --accent2: #d4a16c;
       --soft-accent: rgba(139, 185, 175, 0.10);
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+      --node-fill: rgba(139, 185, 175, 0.22);
+      --bond-color: rgba(139, 185, 175, 0.30);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
@@ -65,14 +62,8 @@
       mask-image: radial-gradient(circle at center, black, transparent 78%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, input, textarea {
-      font: inherit;
-    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
 
     header {
       position: sticky;
@@ -114,8 +105,7 @@
         var(--soft-accent);
     }
 
-    .brand-icon::before,
-    .brand-icon::after {
+    .brand-icon::before, .brand-icon::after {
       content: "";
       position: absolute;
       width: 7px;
@@ -123,16 +113,8 @@
       border-radius: 50%;
       background: var(--accent2);
     }
-
-    .brand-icon::before {
-      top: 5px;
-      left: 5px;
-    }
-
-    .brand-icon::after {
-      right: 5px;
-      bottom: 5px;
-    }
+    .brand-icon::before { top: 5px; left: 5px; }
+    .brand-icon::after { right: 5px; bottom: 5px; }
 
     .nav-links {
       display: flex;
@@ -143,13 +125,8 @@
       font-weight: 600;
     }
 
-    .nav-links a {
-      cursor: pointer;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+    .nav-links a { cursor: pointer; }
+    .nav-links a:hover { color: var(--accent); }
 
     .theme-btn {
       border: 1px solid var(--line);
@@ -169,21 +146,15 @@
       padding: 44px 22px 90px;
     }
 
-    .page {
-      display: none;
-      min-height: calc(100vh - 90px);
-      animation: fade 0.28s ease;
-    }
-
-    .page.active {
-      display: block;
-    }
+    .page { display: none; min-height: calc(100vh - 90px); animation: fade 0.28s ease; }
+    .page.active { display: block; }
 
     @keyframes fade {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── HERO ── */
     .hero {
       min-height: calc(100vh - 122px);
       display: grid;
@@ -225,9 +196,7 @@
       margin-bottom: 28px;
     }
 
-    .hero strong {
-      color: var(--ink);
-    }
+    .hero strong { color: var(--ink); }
 
     .tags {
       display: flex;
@@ -267,86 +236,65 @@
       border-color: var(--accent);
     }
 
+    /* ── VISUAL PANEL (Crystal Lattice SVG) ── */
     .visual {
       min-height: 440px;
       border: 1px solid var(--line);
-      background:
-        linear-gradient(145deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--soft-accent) 55%, transparent));
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       border-radius: 34px;
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
-      padding: 26px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .visual::after {
-      content: "Fe₃C / Al₂O₃ / ZrO₂ / SiC";
-      position: absolute;
-      left: 26px;
-      bottom: 26px;
-      color: var(--muted);
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 13px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--paper) 82%, transparent);
-      border-radius: 14px;
-      padding: 11px 13px;
+    .visual-header {
+      padding: 20px 22px 12px;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
     }
 
-    .lattice {
-      position: absolute;
-      inset: 22px;
-    }
-
-    .node {
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: var(--accent);
-      border-radius: 999px;
-      box-shadow: 0 0 0 10px var(--soft-accent);
-    }
-
-    .node:nth-child(1) { top: 14%; left: 18%; }
-    .node:nth-child(2) { top: 18%; right: 20%; background: var(--accent2); }
-    .node:nth-child(3) { top: 45%; left: 46%; }
-    .node:nth-child(4) { left: 20%; bottom: 18%; background: var(--accent2); }
-    .node:nth-child(5) { right: 16%; bottom: 20%; }
-    .node:nth-child(6) { top: 63%; left: 10%; }
-
-    .bond {
-      position: absolute;
-      height: 1px;
-      background: color-mix(in srgb, var(--accent) 45%, var(--line));
-      transform-origin: left center;
-    }
-
-    .b1 { top: 18%; left: 22%; width: 245px; transform: rotate(4deg); }
-    .b2 { top: 20%; right: 22%; width: 184px; transform: rotate(119deg); }
-    .b3 { top: 48%; left: 48%; width: 184px; transform: rotate(34deg); }
-    .b4 { bottom: 20%; left: 23%; width: 255px; transform: rotate(-8deg); }
-    .b5 { top: 18%; left: 20%; width: 250px; transform: rotate(62deg); }
-    .b6 { top: 66%; left: 13%; width: 138px; transform: rotate(-36deg); }
-
-    .visual-card {
-      position: absolute;
-      top: 26px;
-      left: 26px;
-      right: 26px;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--paper) 84%, transparent);
-      border-radius: 18px;
-      padding: 16px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .visual-card b {
+    .visual-header b {
       display: block;
-      color: var(--ink);
-      margin-bottom: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 3px;
     }
 
+    .visual-header span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .lattice-svg-wrap {
+      flex: 1;
+      padding: 18px 22px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lattice-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+    }
+
+    .visual-footer {
+      padding: 14px 22px;
+      border-top: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+
+    .visual-footer code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── SECTIONS ── */
     .section-head {
       display: flex;
       justify-content: space-between;
@@ -367,11 +315,7 @@
       font-size: 15px;
     }
 
-    .grid {
-      display: grid;
-      gap: 16px;
-    }
-
+    .grid { display: grid; gap: 16px; }
     .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
@@ -389,10 +333,7 @@
       margin-bottom: 8px;
     }
 
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-    }
+    .card p { color: var(--muted); font-size: 15px; }
 
     .meta {
       color: var(--accent);
@@ -419,6 +360,31 @@
       font-weight: 700;
     }
 
+    /* About extended cards */
+    .about-extra {
+      margin-top: 16px;
+    }
+
+    .about-row {
+      display: flex;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .about-row:last-child { border-bottom: none; }
+
+    .about-row-label {
+      color: var(--accent);
+      font-weight: 700;
+      min-width: 130px;
+      font-size: 13px;
+    }
+
+    .about-row-val { color: var(--muted); }
+
+    /* Writing */
     .post {
       display: flex;
       justify-content: space-between;
@@ -428,20 +394,11 @@
       padding: 18px 0;
     }
 
-    .post:first-child {
-      border-top: 1px solid var(--line);
-    }
+    .post:first-child { border-top: 1px solid var(--line); }
+    .post-title { font-size: 19px; font-weight: 750; letter-spacing: -0.03em; }
+    .post small { color: var(--muted); }
 
-    .post-title {
-      font-size: 19px;
-      font-weight: 750;
-      letter-spacing: -0.03em;
-    }
-
-    .post small {
-      color: var(--muted);
-    }
-
+    /* Terminology */
     .term-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -455,10 +412,7 @@
       padding: 18px;
     }
 
-    .term b {
-      display: block;
-      margin-bottom: 4px;
-    }
+    .term b { display: block; margin-bottom: 4px; }
 
     .term span {
       display: block;
@@ -468,11 +422,9 @@
       font-weight: 750;
     }
 
-    .term p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .term p { color: var(--muted); font-size: 14px; }
 
+    /* Contact */
     .contact-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -486,15 +438,9 @@
       margin-top: 18px;
     }
 
-    .contact-links a {
-      color: var(--accent);
-      font-weight: 750;
-    }
+    .contact-links a { color: var(--accent); font-weight: 750; }
 
-    .form {
-      display: grid;
-      gap: 12px;
-    }
+    .form { display: grid; gap: 12px; }
 
     input, textarea {
       width: 100%;
@@ -506,9 +452,17 @@
       outline: none;
     }
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
+    input:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .form-status {
+      font-size: 13px;
+      color: var(--accent);
+      min-height: 20px;
+      text-align: center;
     }
 
     footer {
@@ -521,75 +475,18 @@
       z-index: 1;
     }
 
-    .player {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 60;
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--paper) 86%, transparent);
-      backdrop-filter: blur(16px);
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 10px 13px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      box-shadow: var(--shadow);
-      font-size: 13px;
-    }
-
-    .player button {
-      border: 0;
-      background: var(--accent);
-      color: white;
-      border-radius: 999px;
-      width: 28px;
-      height: 28px;
-      cursor: pointer;
-    }
-
     @media (max-width: 820px) {
-      .nav {
-        align-items: flex-start;
-      }
+      .nav { align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 10px;
-      }
-
-      .hero,
-      .two,
-      .three,
-      .contact-box,
-      .term-grid {
+      .hero, .two, .three, .contact-box, .term-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        min-height: auto;
-        padding-top: 30px;
-      }
-
-      .visual {
-        min-height: 330px;
-      }
-
-      .section-head {
-        display: block;
-      }
-
-      .section-note {
-        margin-top: 12px;
-      }
-
-      .player {
-        left: 14px;
-        right: 14px;
-        justify-content: center;
-      }
+      .hero { min-height: auto; padding-top: 30px; }
+      .visual { min-height: 330px; }
+      .section-head { display: block; }
+      .section-note { margin-top: 12px; }
     }
   </style>
 </head>
@@ -614,6 +511,8 @@
   </header>
 
   <main>
+
+    <!-- HOME -->
     <section id="home" class="page active">
       <div class="hero">
         <div>
@@ -640,29 +539,128 @@
           </div>
         </div>
 
+        <!-- Crystal Lattice Visual -->
         <div class="visual">
-          <div class="visual-card">
+          <div class="visual-header">
             <b>Current focus</b>
-            XRD analysis, materials datasets, technical writing, and industry-oriented case studies.
+            <span>XRD analysis, materials datasets, technical writing, and industry-oriented case studies.</span>
           </div>
-          <div class="lattice">
-            <span class="bond b1"></span>
-            <span class="bond b2"></span>
-            <span class="bond b3"></span>
-            <span class="bond b4"></span>
-            <span class="bond b5"></span>
-            <span class="bond b6"></span>
-            <span class="node"></span>
-            <span class="node"></span>
-            <span class="node"></span>
-            <span class="node"></span>
-            <span class="node"></span>
-            <span class="node"></span>
+
+          <div class="lattice-svg-wrap">
+            <!--
+              BCC-inspired crystal lattice diagram.
+              Nodes are placed at precise percentage positions using SVG coordinates.
+              Bonds are drawn as <line> elements between nodes — no overlap with text.
+            -->
+            <svg viewBox="0 0 340 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Crystal lattice diagram">
+              <defs>
+                <style>
+                  .bond { stroke: var(--bond-color); stroke-width: 1.2; }
+                  .node-outer { fill: var(--soft-accent); }
+                  .node-inner { fill: var(--accent); }
+                  .node-inner-2 { fill: var(--accent2); }
+                  .lbl { font-family: ui-monospace, monospace; font-size: 9px; fill: var(--muted); }
+                </style>
+              </defs>
+
+              <!-- Grid reference points (corners + body center of two unit cells) -->
+              <!-- Cell A: corners at (40,30) (160,30) (40,130) (160,130), body center (100,80) -->
+              <!-- Cell B: corners at (180,30) (300,30) (180,130) (300,130), body center (240,80) -->
+              <!-- Bottom row shifted -->
+
+              <!-- BONDS Cell A -->
+              <line class="bond" x1="40" y1="30" x2="160" y2="30"/>
+              <line class="bond" x1="40" y1="30" x2="40" y2="130"/>
+              <line class="bond" x1="160" y1="30" x2="160" y2="130"/>
+              <line class="bond" x1="40" y1="130" x2="160" y2="130"/>
+              <!-- diagonals to body center -->
+              <line class="bond" x1="40" y1="30" x2="100" y2="80"/>
+              <line class="bond" x1="160" y1="30" x2="100" y2="80"/>
+              <line class="bond" x1="40" y1="130" x2="100" y2="80"/>
+              <line class="bond" x1="160" y1="130" x2="100" y2="80"/>
+
+              <!-- BONDS Cell B -->
+              <line class="bond" x1="180" y1="30" x2="300" y2="30"/>
+              <line class="bond" x1="180" y1="30" x2="180" y2="130"/>
+              <line class="bond" x1="300" y1="30" x2="300" y2="130"/>
+              <line class="bond" x1="180" y1="130" x2="300" y2="130"/>
+              <line class="bond" x1="180" y1="30" x2="240" y2="80"/>
+              <line class="bond" x1="300" y1="30" x2="240" y2="80"/>
+              <line class="bond" x1="180" y1="130" x2="240" y2="80"/>
+              <line class="bond" x1="300" y1="130" x2="240" y2="80"/>
+
+              <!-- cross-cell shared edge bonds -->
+              <line class="bond" x1="160" y1="30" x2="180" y2="30"/>
+              <line class="bond" x1="160" y1="130" x2="180" y2="130"/>
+
+              <!-- Bottom perspective layer -->
+              <line class="bond" x1="40" y1="130" x2="70" y2="190"/>
+              <line class="bond" x1="160" y1="130" x2="190" y2="190"/>
+              <line class="bond" x1="300" y1="130" x2="310" y2="190"/>
+              <line class="bond" x1="70" y1="190" x2="190" y2="190"/>
+              <line class="bond" x1="190" y1="190" x2="310" y2="190"/>
+
+              <!-- NODES (drawn after bonds so they appear on top) -->
+              <!-- Cell A corners -->
+              <circle class="node-outer" cx="40" cy="30" r="9"/>
+              <circle class="node-inner" cx="40" cy="30" r="5"/>
+
+              <circle class="node-outer" cx="160" cy="30" r="9"/>
+              <circle class="node-inner" cx="160" cy="30" r="5"/>
+
+              <circle class="node-outer" cx="40" cy="130" r="9"/>
+              <circle class="node-inner" cx="40" cy="130" r="5"/>
+
+              <circle class="node-outer" cx="160" cy="130" r="9"/>
+              <circle class="node-inner" cx="160" cy="130" r="5"/>
+
+              <!-- Cell A body center -->
+              <circle class="node-outer" cx="100" cy="80" r="11"/>
+              <circle class="node-inner-2" cx="100" cy="80" r="6"/>
+
+              <!-- Cell B corners (180 shared with cell A right edge) -->
+              <circle class="node-outer" cx="180" cy="30" r="9"/>
+              <circle class="node-inner" cx="180" cy="30" r="5"/>
+
+              <circle class="node-outer" cx="300" cy="30" r="9"/>
+              <circle class="node-inner" cx="300" cy="30" r="5"/>
+
+              <circle class="node-outer" cx="180" cy="130" r="9"/>
+              <circle class="node-inner" cx="180" cy="130" r="5"/>
+
+              <circle class="node-outer" cx="300" cy="130" r="9"/>
+              <circle class="node-inner" cx="300" cy="130" r="5"/>
+
+              <!-- Cell B body center -->
+              <circle class="node-outer" cx="240" cy="80" r="11"/>
+              <circle class="node-inner-2" cx="240" cy="80" r="6"/>
+
+              <!-- Bottom perspective nodes -->
+              <circle class="node-outer" cx="70" cy="190" r="7"/>
+              <circle class="node-inner" cx="70" cy="190" r="4"/>
+
+              <circle class="node-outer" cx="190" cy="190" r="7"/>
+              <circle class="node-inner" cx="190" cy="190" r="4"/>
+
+              <circle class="node-outer" cx="310" cy="190" r="7"/>
+              <circle class="node-inner" cx="310" cy="190" r="4"/>
+
+              <!-- Legend -->
+              <circle cx="18" cy="205" r="5" class="node-inner"/>
+              <text x="27" y="209" class="lbl">Corner atom</text>
+              <circle cx="120" cy="205" r="6" class="node-inner-2"/>
+              <text x="130" y="209" class="lbl">Body-center atom</text>
+            </svg>
+          </div>
+
+          <div class="visual-footer">
+            <code>Fe₃C &nbsp;/&nbsp; Al₂O₃ &nbsp;/&nbsp; ZrO₂ &nbsp;/&nbsp; SiC</code>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ABOUT -->
     <section id="about" class="page">
       <div class="section-head">
         <h2>About</h2>
@@ -676,8 +674,13 @@
           <div class="meta">Profile</div>
           <h3>Materials student building a sector-focused portfolio</h3>
           <p>
-            I am preparing for industry roles rather than a purely academic path. My current focus is combining
-            materials science with Python, AI-assisted research, and clear technical writing.
+            I am a Materials Science & Technologies student preparing for industry roles rather than a purely academic path.
+            My work sits at the intersection of classical materials engineering and modern data-driven methods —
+            combining characterization workflows with Python-based analysis and clear technical writing.
+          </p>
+          <p style="margin-top:10px;">
+            I am especially drawn to the German industrial ecosystem: its precision engineering culture, the ongoing green-steel
+            and battery transitions, and the demand for materials professionals who can communicate across languages and disciplines.
           </p>
         </div>
 
@@ -685,21 +688,43 @@
           <div class="meta">Direction</div>
           <h3>Digital materials engineering</h3>
           <p>
-            I am especially interested in materials data analysis, sustainable materials, battery materials,
-            recycling, characterization, and German industrial technology.
+            My focus is on where materials science meets computation: XRD analysis with Python, materials property databases,
+            sustainable materials selection, battery electrode research, and circular economy strategies for critical raw materials.
+          </p>
+          <p style="margin-top:10px;">
+            I follow developments in hydrogen-based steelmaking, CMAS corrosion in turbine coatings, and Li-ion recycling
+            regulation in the EU — areas where data literacy gives a real edge.
           </p>
         </div>
 
         <div class="card">
-          <div class="meta">Skills</div>
-          <h3>Tools & technical stack</h3>
-          <p>Python, pandas, matplotlib, scipy, Jupyter, GitHub, AI-assisted research, technical writing.</p>
+          <div class="meta">Skills & Tools</div>
+          <h3>Technical stack</h3>
+          <p>Python for data analysis and visualization, scientific workflows, and AI-assisted research. Comfortable with version control and reproducible notebooks.</p>
           <div class="skill-list">
             <span class="pill">Python</span>
+            <span class="pill">pandas</span>
+            <span class="pill">matplotlib</span>
+            <span class="pill">scipy</span>
+            <span class="pill">Jupyter</span>
+            <span class="pill">GitHub</span>
             <span class="pill">XRD</span>
             <span class="pill">Data Analysis</span>
-            <span class="pill">GitHub</span>
-            <span class="pill">German</span>
+            <span class="pill">Technical Writing</span>
+          </div>
+          <div class="about-extra">
+            <div class="about-row">
+              <span class="about-row-label">Languages</span>
+              <span class="about-row-val">Turkish (native) · English (fluent) · German (working proficiency)</span>
+            </div>
+            <div class="about-row">
+              <span class="about-row-label">Characterization</span>
+              <span class="about-row-val">XRD, SEM basics, optical microscopy, hardness testing</span>
+            </div>
+            <div class="about-row">
+              <span class="about-row-label">Materials areas</span>
+              <span class="about-row-val">Metals, ceramics, composites, battery materials, coatings</span>
+            </div>
           </div>
         </div>
 
@@ -707,13 +732,32 @@
           <div class="meta">Open to</div>
           <h3>Internships & project-based roles</h3>
           <p>
-            R&D internship, materials data intern, sustainability intern, battery materials intern,
-            quality/characterization support, and technical research roles.
+            Actively seeking R&amp;D internships, materials data intern positions, sustainability or battery materials intern roles,
+            quality/characterization support, and technical research opportunities — particularly in Germany or remote with German companies.
           </p>
+          <div class="about-extra">
+            <div class="about-row">
+              <span class="about-row-label">Availability</span>
+              <span class="about-row-val">Available for internships and Werkstudent roles</span>
+            </div>
+            <div class="about-row">
+              <span class="about-row-label">Location</span>
+              <span class="about-row-val">Open to relocation; remote or hybrid preferred</span>
+            </div>
+            <div class="about-row">
+              <span class="about-row-label">Work style</span>
+              <span class="about-row-val">Self-directed, documentation-driven, comfortable in cross-disciplinary teams</span>
+            </div>
+            <div class="about-row">
+              <span class="about-row-label">Industries</span>
+              <span class="about-row-val">Steel, battery tech, aerospace, automotive, ceramics, energy</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="page">
       <div class="section-head">
         <h2>Projects</h2>
@@ -758,6 +802,7 @@
       </div>
     </section>
 
+    <!-- WRITING -->
     <section id="writing" class="page">
       <div class="section-head">
         <h2>Writing</h2>
@@ -769,7 +814,7 @@
       <div>
         <a class="post" href="#">
           <div>
-            <div class="post-title">Germany’s battery recycling push: a materials science view</div>
+            <div class="post-title">Germany's battery recycling push: a materials science view</div>
             <small>Draft · English</small>
           </div>
           <span>→</span>
@@ -793,6 +838,7 @@
       </div>
     </section>
 
+    <!-- TERMINOLOGY -->
     <section id="terminology" class="page">
       <div class="section-head">
         <h2>Terminology</h2>
@@ -840,6 +886,7 @@
       </div>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="page">
       <div class="section-head">
         <h2>Contact</h2>
@@ -853,8 +900,7 @@
           <div class="meta">Reach out</div>
           <h3>Open to internship opportunities</h3>
           <p>
-            I respond in Turkish, English, and German. Replace the placeholder links below with your real email,
-            LinkedIn, and GitHub profile.
+            I respond in Turkish, English, and German. Feel free to reach out via email or LinkedIn.
           </p>
 
           <div class="contact-links">
@@ -864,23 +910,17 @@
           </div>
         </div>
 
-        <form class="card form" action="https://formspree.io/f/your-form-id" method="POST">
-          <input type="text" name="name" placeholder="Name" />
-          <input type="email" name="email" placeholder="Email" />
-          <textarea name="message" placeholder="Message"></textarea>
-          <button class="btn primary" type="submit">Send message</button>
-        </form>
+        <div class="card form">
+          <input type="text" id="cf-name" placeholder="Name" />
+          <input type="email" id="cf-email" placeholder="Email" />
+          <textarea id="cf-message" placeholder="Message"></textarea>
+          <button class="btn primary" onclick="sendContactForm()">Send message</button>
+          <div class="form-status" id="form-status"></div>
+        </div>
       </div>
     </section>
-  </main>
 
-  <div class="player">
-    <button onclick="toggleMusic()" id="musicBtn">▶</button>
-    <span>Optional focus music</span>
-    <audio id="music" loop>
-      <source src="" type="audio/mpeg">
-    </audio>
-  </div>
+  </main>
 
   <footer>
     © 2026 Ayşe Tuğçe Aydın · Materials Science Portfolio
@@ -888,32 +928,60 @@
 
   <script>
     function showPage(id) {
-      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function toggleTheme() {
       const html = document.documentElement;
-      const current = html.getAttribute('data-theme');
-      html.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     }
 
-    function toggleMusic() {
-      const music = document.getElementById('music');
-      const btn = document.getElementById('musicBtn');
+    async function sendContactForm() {
+      const name    = document.getElementById('cf-name').value.trim();
+      const email   = document.getElementById('cf-email').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+      const status  = document.getElementById('form-status');
 
-      if (!music.querySelector('source').getAttribute('src')) {
-        alert('Music file is not connected yet. Add an MP3 link inside the audio source.');
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill in all fields.';
+        status.style.color = 'var(--accent2)';
         return;
       }
 
-      if (music.paused) {
-        music.play();
-        btn.textContent = 'Ⅱ';
-      } else {
-        music.pause();
-        btn.textContent = '▶';
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) {
+        status.textContent = 'Please enter a valid email address.';
+        status.style.color = 'var(--accent2)';
+        return;
+      }
+
+      status.textContent = 'Sending…';
+      status.style.color = 'var(--muted)';
+
+      try {
+        /* Replace YOUR_FORM_ID with your actual Formspree form ID, e.g. xpzvwkbj */
+        const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+
+        if (res.ok) {
+          status.textContent = 'Message sent! I'll get back to you soon.';
+          status.style.color = 'var(--accent)';
+          document.getElementById('cf-name').value = '';
+          document.getElementById('cf-email').value = '';
+          document.getElementById('cf-message').value = '';
+        } else {
+          const data = await res.json();
+          status.textContent = data.error || 'Something went wrong. Please try email directly.';
+          status.style.color = 'var(--accent2)';
+        }
+      } catch (err) {
+        status.textContent = 'Network error. Please try email directly.';
+        status.style.color = 'var(--accent2)';
       }
     }
   </script>
