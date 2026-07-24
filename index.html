@@ -328,11 +328,23 @@
     .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     .card {
+      display: block;
       border: 1px solid var(--line);
       background: color-mix(in srgb, var(--paper) 88%, transparent);
       border-radius: 24px;
       padding: 22px;
       box-shadow: 0 14px 42px rgba(0,0,0,0.04);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    a.card { cursor: pointer; }
+
+    a.card:hover,
+    a.card:focus-visible {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.10);
+      border-color: var(--accent);
+      outline: none;
     }
 
     .card h3 {
@@ -775,116 +787,87 @@
 
       <div class="grid three">
 
-  <a class="card"
-     href="https://github.com/tugce-aydin/crystal-structure-explorer"
-     target="_blank">
+        <a class="card"
+           href="https://github.com/tugce-aydin/crystal-structure-explorer"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="meta">View on GitHub ↗</div>
+          <h3>Crystal Structure Explorer</h3>
+          <p>
+            Interactive 3D visualization of FCC, BCC and HCP crystal structures
+            with engineering properties, applications and real-time exploration.
+          </p>
+          <div class="skill-list">
+            <span class="pill">Python</span>
+            <span class="pill">Streamlit</span>
+            <span class="pill">Plotly</span>
+            <span class="pill">Crystallography</span>
+          </div>
+        </a>
 
-    <div class="meta">View on GitHub ↗</div>
+        <a class="card"
+           href="https://github.com/tugce-aydin/crystal-calculator-suite"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="meta">View on GitHub ↗</div>
+          <h3>Crystal Calculator Suite</h3>
+          <p>
+            A collection of crystallography calculators for atomic packing factor,
+            theoretical density, coordination number, interplanar spacing,
+            Bragg's law and XRD peak analysis.
+          </p>
+          <div class="skill-list">
+            <span class="pill">Python</span>
+            <span class="pill">Streamlit</span>
+            <span class="pill">Plotly</span>
+            <span class="pill">PyTest</span>
+          </div>
+        </a>
 
-    <h3>Crystal Structure Explorer</h3>
+        <div class="card">
+          <div class="meta">Coming Soon</div>
+          <h3>Materials Property Explorer</h3>
+          <p>
+            Interactive exploration and comparison of engineering materials using
+            property filters, searchable datasets and Ashby-style diagrams.
+          </p>
+          <div class="skill-list">
+            <span class="pill">Python</span>
+            <span class="pill">pandas</span>
+            <span class="pill">Ashby Charts</span>
+          </div>
+        </div>
 
-    <p>
-      Interactive visualization of FCC, BCC and HCP crystal structures
-      with engineering properties, applications and interactive 3D Plotly models.
-    </p>
+        <div class="card">
+          <div class="meta">Coming Soon</div>
+          <h3>Material Recommendation Engine</h3>
+          <p>
+            A decision-support tool that recommends suitable materials based on
+            mechanical, thermal, economic and sustainability requirements.
+          </p>
+          <div class="skill-list">
+            <span class="pill">Python</span>
+            <span class="pill">Material Selection</span>
+            <span class="pill">Data Analysis</span>
+          </div>
+        </div>
 
-    <div class="skill-list">
-      <span class="pill">Python</span>
-      <span class="pill">Streamlit</span>
-      <span class="pill">Plotly</span>
-      <span class="pill">Crystallography</span>
-    </div>
+        <div class="card">
+          <div class="meta">Coming Soon</div>
+          <h3>XRD Analysis Toolkit</h3>
+          <p>
+            A materials characterization workflow for XRD pattern processing,
+            background correction, peak detection and interactive visualization.
+          </p>
+          <div class="skill-list">
+            <span class="pill">Python</span>
+            <span class="pill">XRD</span>
+            <span class="pill">SciPy</span>
+          </div>
+        </div>
 
-  </a>
-
-
-  <a
-  href="https://github.com/tugce-aydin/crystal-calculator-suite"
-  target="_blank"
-  rel="noopener noreferrer"
-  style="text-decoration:none; color:inherit;"
->
-  <div class="card">
-
-    <div class="meta">View on GitHub ↗</div>
-
-    <h3>Crystal Calculator Suite</h3>
-
-    <p>
-      Engineering calculators for atomic packing factor, theoretical density,
-      coordination number, interplanar spacing, Bragg's law and XRD peak calculations.
-    </p>
-
-    <div class="skill-list">
-      <span class="pill">Python</span>
-      <span class="pill">Streamlit</span>
-      <span class="pill">Plotly</span>
-    </div>
-
-  </div>
-</a>
-
-
-  <div class="card">
-
-    <div class="meta">Coming Soon</div>
-
-    <h3>Materials Property Explorer</h3>
-
-    <p>
-      Interactive exploration and comparison of engineering materials using
-      property filters, searchable datasets and Ashby-style diagrams.
-    </p>
-
-    <div class="skill-list">
-      <span class="pill">Python</span>
-      <span class="pill">pandas</span>
-      <span class="pill">Ashby Charts</span>
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="meta">Coming Soon</div>
-
-    <h3>Material Recommendation Engine</h3>
-
-    <p>
-      A decision-support tool that recommends suitable materials based on
-      mechanical, thermal, economic and sustainability requirements.
-    </p>
-
-    <div class="skill-list">
-      <span class="pill">Python</span>
-      <span class="pill">Material Selection</span>
-      <span class="pill">Data Analysis</span>
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="meta">Coming Soon</div>
-
-    <h3>XRD Phase Identification Toolkit</h3>
-
-    <p>
-      A materials characterization workflow for XRD pattern processing,
-      peak detection, phase comparison and interactive visualization.
-    </p>
-
-    <div class="skill-list">
-      <span class="pill">Python</span>
-      <span class="pill">XRD</span>
-      <span class="pill">SciPy</span>
-    </div>
-
-  </div>
-
-</div>
+      </div>
+    </section>
 
     <!-- WRITING -->
     <section id="writing" class="page">
@@ -1012,14 +995,27 @@
 
   <script>
     function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+
+      target.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function toggleTheme() {
       const html = document.documentElement;
-      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      const nextTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('portfolio-theme', nextTheme);
+    }
+
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', savedTheme);
     }
 
     async function sendContactForm() {
