@@ -418,32 +418,6 @@
     .post-title { font-size: 19px; font-weight: 750; letter-spacing: -0.03em; }
     .post small { color: var(--muted); }
 
-    /* Terminology */
-    .term-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .term {
-      border: 1px solid var(--line);
-      background: color-mix(in srgb, var(--paper) 90%, transparent);
-      border-radius: 20px;
-      padding: 18px;
-    }
-
-    .term b { display: block; margin-bottom: 4px; }
-
-    .term span {
-      display: block;
-      color: var(--accent);
-      font-size: 13px;
-      margin-bottom: 8px;
-      font-weight: 750;
-    }
-
-    .term p { color: var(--muted); font-size: 14px; }
-
     /* Contact */
     .contact-box {
       display: grid;
@@ -499,7 +473,7 @@
       .nav { align-items: flex-start; }
       .nav-links { flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 
-      .hero, .two, .three, .contact-box, .term-grid {
+      .hero, .two, .three, .contact-box {
         grid-template-columns: 1fr;
       }
 
@@ -522,7 +496,6 @@
         <a onclick="showPage('about')">About</a>
         <a onclick="showPage('projects')">Projects</a>
         <a onclick="showPage('writing')">Writing</a>
-        <a onclick="showPage('terminology')">Terminology</a>
         <a onclick="showPage('contact')">Contact</a>
         <button class="theme-btn" onclick="toggleTheme()">Light / Dark</button>
       </div>
@@ -824,47 +797,24 @@
           </div>
         </a>
 
-        <div class="card">
-          <div class="meta">Coming Soon</div>
-          <h3>Materials Property Explorer</h3>
-          <p>
-            Interactive exploration and comparison of engineering materials using
-            property filters, searchable datasets and Ashby-style diagrams.
-          </p>
-          <div class="skill-list">
-            <span class="pill">Python</span>
-            <span class="pill">pandas</span>
-            <span class="pill">Ashby Charts</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="meta">Coming Soon</div>
-          <h3>Material Recommendation Engine</h3>
-          <p>
-            A decision-support tool that recommends suitable materials based on
-            mechanical, thermal, economic and sustainability requirements.
-          </p>
-          <div class="skill-list">
-            <span class="pill">Python</span>
-            <span class="pill">Material Selection</span>
-            <span class="pill">Data Analysis</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="meta">Coming Soon</div>
+        <a class="card"
+           href="https://github.com/tugce-aydin/xrd-analysis-toolkit"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="meta">View on GitHub ↗</div>
           <h3>XRD Analysis Toolkit</h3>
           <p>
-            A materials characterization workflow for XRD pattern processing,
-            background correction, peak detection and interactive visualization.
+            Interactive analysis of raw XRD patterns and instrument-generated peak lists,
+            including peak detection, d-spacing calculations and sample comparison.
           </p>
           <div class="skill-list">
             <span class="pill">Python</span>
+            <span class="pill">Streamlit</span>
+            <span class="pill">Plotly</span>
             <span class="pill">XRD</span>
             <span class="pill">SciPy</span>
           </div>
-        </div>
+        </a>
 
       </div>
     </section>
@@ -902,54 +852,6 @@
           </div>
           <span>→</span>
         </a>
-      </div>
-    </section>
-
-    <!-- TERMINOLOGY -->
-    <section id="terminology" class="page">
-      <div class="section-head">
-        <h2>Terminology</h2>
-        <p class="section-note">
-          A mini technical glossary for German, English, and Turkish materials terminology.
-        </p>
-      </div>
-
-      <div class="term-grid">
-        <div class="term">
-          <b>Gefüge</b>
-          <span>Microstructure · Mikroyapı</span>
-          <p>The internal structure of a material, including phases, grains, and defects.</p>
-        </div>
-
-        <div class="term">
-          <b>Streckgrenze</b>
-          <span>Yield strength · Akma dayanımı</span>
-          <p>The stress level where permanent plastic deformation begins.</p>
-        </div>
-
-        <div class="term">
-          <b>Röntgendiffraktometrie</b>
-          <span>XRD · X-ışını kırınımı</span>
-          <p>A characterization method used to identify crystal structure and phases.</p>
-        </div>
-
-        <div class="term">
-          <b>Korrosion</b>
-          <span>Corrosion · Korozyon</span>
-          <p>Material degradation caused by chemical or electrochemical reactions.</p>
-        </div>
-
-        <div class="term">
-          <b>Wärmebehandlung</b>
-          <span>Heat treatment · Isıl işlem</span>
-          <p>Controlled heating and cooling to change material properties.</p>
-        </div>
-
-        <div class="term">
-          <b>Bruchzähigkeit</b>
-          <span>Fracture toughness · Kırılma tokluğu</span>
-          <p>Resistance of a material to crack propagation.</p>
-        </div>
       </div>
     </section>
 
